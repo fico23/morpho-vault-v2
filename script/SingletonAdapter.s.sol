@@ -17,11 +17,11 @@ contract MorphoMarketV1SingletonAdapterScript is Script {
 
         vault.setCurator(owner);
 
-        bytes memory addAdapterCalldata = abi.encodeWithSelector(VaultV2.addAdapter.selector, adapter);
+        bytes memory setIsAllocatorCalldata = abi.encodeWithSelector(VaultV2.setIsAllo, adapter);
 
         bytes[] memory data = new bytes[](2);
-        data[0] = abi.encodeWithSelector(VaultV2.submit.selector, addAdapterCalldata);
-        data[1] = addAdapterCalldata;
+        data[0] = abi.encodeWithSelector(VaultV2.submit.selector, setIsAllocatorCalldata);
+        data[1] = setIsAllocatorCalldata;
 
         vault.multicall(data);
  
